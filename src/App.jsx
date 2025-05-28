@@ -2,12 +2,20 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Header from './header';
+import ExpenseForm from './expenseForm';
 
 function App() {
   const [count, setCount] = useState(0)
 
+  const handleAddExpense = (expense) => {
+    console.log('Expense added:', expense);
+  };
+
   return (
     <>
+      <Header />
+      <ExpenseForm onAddExpense={handleAddExpense} />
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
