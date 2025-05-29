@@ -6,41 +6,11 @@ import Header from './header';
 import ExpenseForm from './expenseForm';
 
 function App() {
-  const [expense, setExpense] = useState([
-    {
-      id: 1,
-      amount: 12.50,
-      description: "Coffee and pastry",
-      category: "Food",
-      date: "2025-05-24"
-    },
-    {
-      id: 2,
-      amount: 45.00,
-      description: "Gas for car",
-      category: "Transportation",
-      date: "2025-05-23"
-    },
-    {
-      id: 3,
-      amount: 25.99,
-      description: "Movie tickets",
-      category: "Entertainment",
-      date: "2025-05-22"
-    }
-  ]);
+  const [count, setCount] = useState(0)
 
-  const [budget, setBudget] = useState(1000);
-  const [categoryFilter, setCategoryFilter] = useState('All');
-
-  // Function to add new expense
-
-  // Function to delete expense
-
-  // Function to update budget
-
-  // Function to change category filter
-
+  const handleAddExpense = (expense) => {
+    console.log('Expense added:', expense);
+  };
 
   return (
     <>
