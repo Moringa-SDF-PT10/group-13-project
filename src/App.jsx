@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Header from './header';
 import ExpenseForm from './expenseForm';
@@ -18,13 +18,13 @@ function App() {
     fetchExpenses();
   }, []);
 
-  const fetchExpenses = async () => {
+ const fetchExpenses = async () => {
     setLoading(true);
     try {
-      const response await fetch(`${API_BASE_URL}expenses`);
+      const response = await fetch(`${API_BASE_URL}`);
       if (response.ok) {
         const data = await response.json();
-        setImportantExpenses(data);
+        setExpenses(data);
       } else {
         console.error("Failed to fetch expenses:", response.statusText);
       }
@@ -34,6 +34,7 @@ function App() {
       setLoading(false);
     }
   };
+
 
 
 
