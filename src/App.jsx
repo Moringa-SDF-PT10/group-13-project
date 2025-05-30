@@ -4,7 +4,7 @@ import Header from './header';
 import ExpenseForm from './expenseForm';
 
 function App() {
-  const [expense, setExpense] = useState([]);
+  const [expenses, setExpenses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [importantExpenses, setImportantExpenses] = useState({});
