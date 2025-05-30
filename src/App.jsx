@@ -36,6 +36,64 @@ function App() {
   };
 
 
+
+  const addExpense = async (newExpense) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${API_BASE_URL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newExpense),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setExpenses([data, ...expenses]);
+        setShowForm(false);
+      } else {
+        console.error("Failed to add expense:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error adding expense:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+   const updateExpense = async (updatedExpense) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${API_BASE_URL}/${editingExpense.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...updatedExpense,
+          id: editingExpense.id,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setExpenses(expenses.map(expense =>
+          expense.id === editingExpense.id ? data : expense
+        ));
+        setEditingExpense(null);
+        setShowForm(false);
+      } else {
+        console.error("Failed to update expense:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error updating expense:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <Header />
