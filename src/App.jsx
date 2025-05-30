@@ -4,9 +4,13 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './header';
 import ExpenseForm from './expenseForm';
+import BudgetSetter from './budgetSetter';
+import ExpenseItem from './expenseItem';
+
 
 function App() {
   const [count, setCount] = useState(0)
+  const [budget, setBudget] = useState(0);
 
   const handleAddExpense = (expense) => {
     console.log('Expense added:', expense);
@@ -16,6 +20,10 @@ function App() {
     <>
       <Header />
       <ExpenseForm onAddExpense={handleAddExpense} />
+      <BudgetSetter budget={budget} setBudget={setBudget} />
+      
+
+
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
