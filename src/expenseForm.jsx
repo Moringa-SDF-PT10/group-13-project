@@ -14,7 +14,6 @@ function ExpenseForm({ onAddExpense }) {
     setAmount('');
     setCategory('Food');
   };
-rge
   return (
     <form onSubmit={handleSubmit}>
       <h3>Add Expense</h3>
