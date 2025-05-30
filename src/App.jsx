@@ -11,7 +11,6 @@ import ExpenseItem from './expenseItem';
 function App() {
   const [count, setCount] = useState(0)
   const [budget, setBudget] = useState(0);
-
   const handleAddExpense = (expense) => {
     console.log('Expense added:', expense);
   };
