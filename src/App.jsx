@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Header from './header';
 import ExpenseForm from './expenseForm';
+import viteLogo from '/vite.svg';
+import reactLogo from './assets/react.svg';
+
 
 function App() {
   const [expenses, setExpenses] = useState([]);
@@ -98,7 +101,7 @@ function App() {
   return (
     <>
       <Header />
-      <ExpenseForm onAddExpense={handleAddExpense} />
+      <ExpenseForm onAddExpense={addExpense} />
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
