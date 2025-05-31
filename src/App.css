@@ -1,42 +1,194 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* === GLOBAL STYLES === */
+:root {
+  --primary-color: #4f46e5;
+  --accent-color: #6366f1;
+  --danger-color: #ef4444;
+  --bg-color: #f9fafb;
+  --card-bg: #ffffff;
+  --text-color: #111827;
+  --muted-text: #6b7280;
+  --border-radius: 0.5rem;
+  --transition: all 0.3s ease-in-out;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 1rem;
+}
+
+h1, h2, h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* === HEADER === */
+header {
   text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* === CATEGORY FILTER === */
+.category-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.category-filter label {
+  font-weight: 500;
+}
+
+.category-filter select {
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #d1d5db;
+  transition: var(--transition);
+}
+
+.category-filter select:hover {
+  border-color: var(--primary-color);
+}
+
+/* === EXPENSE FORM === */
+form {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form input,
+form select {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+form input:focus,
+form select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+form button {
+  padding: 0.7rem;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+form button:hover {
+  background-color: var(--accent-color);
+}
+
+/* === EXPENSE LIST === */
+.expense-list {
+  background-color: var(--card-bg);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.expense-list-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  font-weight: bold;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 0.5rem;
+  color: var(--muted-text);
+}
+
+.no-expenses {
+  text-align: center;
+  color: var(--muted-text);
+  padding: 2rem 0;
+}
+
+/* === EXPENSE ITEM (you can adapt this in ExpenseItem.css if needed) === */
+.expense-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e5e7eb;
+  transition: var(--transition);
+}
+
+.expense-item:hover {
+  background-color: #f3f4f6;
+}
+
+.expense-item button {
+  background-color: var(--danger-color);
+  border: none;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.expense-item button:hover {
+  background-color: #dc2626;
+}
+
+/* === RESPONSIVE BREAKPOINTS === */
+@media (max-width: 768px) {
+  .expense-list-header,
+  .expense-item {
+    grid-template-columns: 1.5fr 1fr 1fr;
+    font-size: 0.9rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .expense-list-header span:nth-child(4),
+  .expense-list-header span:nth-child(5),
+  .expense-item span:nth-child(4),
+  .expense-item span:nth-child(5) {
+    display: none;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 480px) {
+  form {
+    padding: 1rem;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  form input,
+  form select {
+    font-size: 0.9rem;
+  }
 
-.read-the-docs {
-  color: #888;
+  .expense-item {
+    font-size: 0.85rem;
+    grid-template-columns: 1.5fr 1fr 1fr;
+  }
 }
