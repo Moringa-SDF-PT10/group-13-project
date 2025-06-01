@@ -1,6 +1,6 @@
-import './CategoryFilter.css';
+import './App.css';
 
-function CategoryFilter({ onFilterChange }) {
+function CategoryFilter({ currentCategory, onFilterChange }) {
   const categories = [
     { value: 'all', label: 'All Categories' },
     { value: 'food', label: 'Food' },
@@ -13,7 +13,10 @@ function CategoryFilter({ onFilterChange }) {
   return (
     <div className="category-filter">
       <label>Filter by Category:</label>
-      <select onChange={(e) => onFilterChange(e.target.value)}>
+      <select
+        value={currentCategory}
+        onChange={(e) => onFilterChange(e.target.value)}
+      >
         {categories.map((category) => (
           <option key={category.value} value={category.value}>
             {category.label}
