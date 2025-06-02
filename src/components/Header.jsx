@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Header.css';
+
 function Header() {
     return (
         <header>
@@ -7,5 +7,3 @@ function Header() {
         </header>
     );
 }
-
-export default Header;
