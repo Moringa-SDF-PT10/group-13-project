@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
+import Header from './Header';
 
 const ReportsPage = () => {
     const [expenses, setExpenses] = useState([]);
@@ -7,7 +7,7 @@ const ReportsPage = () => {
     useEffect(() => {
         const fetchExpenses = async () => {
             try {
-                const response = await fetch('https://group-13-project.onrender.com/expenses');
+                const response = await fetch('https://group-13-project-1.onrender.com/budgets');
                 const data = await response.json();
                 setExpenses(data);
             } catch (error) {

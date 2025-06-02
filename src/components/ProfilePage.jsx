@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAuth } from '../components/AuthContext';
-import Header from '../components/Header';
+import { useAuth } from './AuthContext';
+import Header from './Header';
 
 const ProfilePage = () => {
     const { user } = useAuth();

@@ -7,7 +7,7 @@ const BudgetPage = () => {
 
     const updateBudget = async (amount) => {
         try {
-            const response = await fetch('https://group-13-project.onrender.com/budgets/1', {
+            const response = await fetch('https://group-13-project-1.onrender.com/budgets/1', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id: 1, amount })

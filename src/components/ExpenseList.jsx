@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import BudgetSetter from './BudgetSetter';
 import CategoryFilter from './CategoryFilter';
 import ExpenseForm from './ExpenseForm';
-import "../App.css";
 
 function ExpenseList() {
   const [expenses, setExpenses] = useState([]);
@@ -14,8 +13,8 @@ function ExpenseList() {
     const fetchData = async () => {
       try {
         const [expensesRes, budgetRes] = await Promise.all([
-          fetch('https://group-13-project.onrender.com/expenses'),
-          fetch('https://group-13-project.onrender.com/expenses')
+          fetch('https://group-13-project-1.onrender.com/budgets'),
+          fetch('https://group-13-project-1.onrender.com/budgets')
         ]);
 
         const expensesData = await expensesRes.json();
@@ -35,7 +34,7 @@ function ExpenseList() {
 
   const addExpense = async (newExpense) => {
     try {
-      const response = await fetch('https://group-13-project.onrender.com/expenses', {
+      const response = await fetch('https://group-13-project-1.onrender.com/budgets', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...newExpense, id: Date.now() })
@@ -49,7 +48,7 @@ function ExpenseList() {
 
   const deleteExpense = async (id) => {
     try {
-      await fetch(`https://group-13-project.onrender.com/expenses/${id}`, {
+      await fetch(`https://group-13-project-1.onrender.com/budgets/${id}`, {
         method: 'DELETE'
       });
       setExpenses(expenses.filter(e => e.id !== id));
@@ -60,7 +59,7 @@ function ExpenseList() {
 
   const updateBudget = async (amount) => {
     try {
-      const response = await fetch('https://group-13-project.onrender.com/budgets/1', {
+      const response = await fetch('https://group-13-project-1.onrender.com/budgets/1', { // FIXED: URL typo
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: 1, amount })
@@ -102,7 +101,7 @@ function ExpenseList() {
             </div>
             {filteredExpenses.map(expense => (
               <div key={expense.id} className="expense-item">
-                <span>{expense.description}</span>
+                <span>{expense.description || expense.name}</span> {/* FIXED: Handle both fields */}
                 <span>${expense.amount.toFixed(2)}</span>
                 <span>{expense.category}</span>
                 <span>{expense.date}</span>
