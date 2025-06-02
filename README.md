@@ -60,54 +60,45 @@ npm run lint: Runs ESLint to check for code issues
 npm run preview: Previews the production build locally
 
 ## Project Structure
+project-root/
 ├── public/
 │   └── favicon.ico
-│
 ├── src/
 │   ├── assets/
 │   │   └── styles/
 │   │       └── global.css
-│   │
 │   ├── components/
 │   │   ├── common/
 │   │   │   └── Header/
 │   │   │       └── Header.jsx
-│   │   │
 │   │   ├── questions/
 │   │   │   ├── QuestionForm/
 │   │   │   │   └── QuestionForm.jsx
-│   │   │   │
 │   │   │   ├── QuestionList/
 │   │   │   │   └── QuestionList.jsx
-│   │   │   │
-│   │   │   └── QuestionItem/
-│   │   │       └── QuestionItem.jsx
-│   │   │
-│   │   └── ui/
-│   │       ├── buttons/
-│   │       │   └── ToggleButton.jsx
-│   │       └── cards/
-│   │           └── QuestionCard.jsx
-│   │
+│   │   │   ├── QuestionItem/
+│   │   │   │   └── QuestionItem.jsx
+│   │   ├── ui/
+│   │   │   ├── buttons/
+│   │   │   │   └── ToggleButton.jsx
+│   │   │   └── cards/
+│   │   │       └── QuestionCard.jsx
 │   ├── pages/
 │   │   ├── Admin/
 │   │   │   └── AdminPage.jsx
-│   │   │
 │   │   └── Quiz/
 │   │       └── QuizPage.jsx
-│   │
 │   ├── services/
 │   │   └── api.js
-│   │
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── routes.jsx
-│
 ├── .eslintrc.cjs
 ├── .gitignore
 ├── package.json
 ├── README.md
 └── vite.config.js
+
 
 ## Project Collaborators
 
