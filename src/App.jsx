@@ -1,12 +1,11 @@
-import React from 'react';
-import NavBar from './components/NavBar';
-
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from './components/AuthContext';
+import Navbar from './components/NavBar';
+
 import HomePage from './components/HomePage';
 import LoginPage from './components/LoginPage';
-import RegisterPage from './components/RegisterPage';
 import DashboardPage from './components/DashboardPage';
 import ExpensesPage from './components/ExpensesPage';
 import AddExpensePage from './components/AddExpensePage';
@@ -16,21 +15,26 @@ import ProfilePage from './components/ProfilePage';
 import SettingsPage from './components/SettingsPage';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    document.body.classList.toggle('dark-mode', darkMode);
+  }, [darkMode]);
+
   return (
     <AuthProvider>
       <Router>
-        <div className="App">
-          <NavBar />
+        <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
+          <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/dashboard" element={<DashboardPage />} protected />
-            <Route path="/expenses" element={<ExpensesPage />} protected />
-            <Route path="/add-expense" element={<AddExpensePage />} protected />
-            <Route path="/budget" element={<BudgetPage />} protected />
-            <Route path="/reports" element={<ReportsPage />} protected />
-            <Route path="/profile" element={<ProfilePage />} protected />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/expenses" element={<ExpensesPage />} />
+            <Route path="/add-expense" element={<AddExpensePage />} />
+            <Route path="/budget" element={<BudgetPage />} />
+            <Route path="/reports" element={<ReportsPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
             <Route path="/settings" element={<SettingsPage />} />
           </Routes>
         </div>

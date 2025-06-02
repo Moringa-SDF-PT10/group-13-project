@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // FIXED: Changed from custom router
 import { useAuth } from './AuthContext';
+import '../styles/LoginPage.css';
 
 const LoginPage = () => {
     const navigate = useNavigate(); // FIXED: Using react-router-dom navigate

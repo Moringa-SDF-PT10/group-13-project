@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/BudgetPage.css';
 
 function BudgetSetter({ budget, onSetBudget }) {
     const [newBudget, setNewBudget] = useState(budget);

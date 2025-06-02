@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from './Header';
 import BudgetSetter from './BudgetSetter';
+import '../styles/BudgetPage.css';
 
 const BudgetPage = () => {
     const [budget, setBudget] = useState(0);
