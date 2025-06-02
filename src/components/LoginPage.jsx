@@ -38,6 +38,12 @@ const LoginPage = () => {
                 />
                 <button type="submit">Login</button>
             </form>
+            <p>
+                Don't have an account?
+                <button type="button" onClick={() => navigate('/register')}>
+                    Register here
+                </button>
+            </p>
         </div>
     );
 };
