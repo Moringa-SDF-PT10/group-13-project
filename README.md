@@ -1,12 +1,12 @@
-Expense Tracker Application
+# Expense Tracker Application
 
 A modern expense tracking web application built with React and Vite. Manage your personal finances by tracking expenses across different categories.
 
 ## Features
 
 - ✨ *Add expenses* with name, amount, and category
-- 🗑 *Delete expenses* you no longer need
-- ✏ *Edit existing expenses* to update details
+- 🗑️ *Delete expenses* you no longer need
+- ✏️ *Edit existing expenses* to update details
 - 🔍 *Filter expenses* by category (Food, Utilities, Transport, etc.)
 - 📊 *View total spending* across all or filtered expenses
 - 📱 *Responsive design* that works on all devices
@@ -26,7 +26,7 @@ Visit the website for a to access the app via the link below
 
 ## Technologies Used
 
-- ⚛ React 18
+- ⚛️ React 18
 - ⚡ Vite
 - 🎨 CSS Modules
 - Public Api
@@ -59,46 +59,39 @@ npm run lint: Runs ESLint to check for code issues
 
 npm run preview: Previews the production build locally
 
-## Project Structure
-project-root/
-├── public/
-│   └── favicon.ico
-├── src/
-│   ├── assets/
-│   │   └── styles/
-│   │       └── global.css
-│   ├── components/
-│   │   ├── common/
-│   │   │   └── Header/
-│   │   │       └── Header.jsx
-│   │   ├── questions/
-│   │   │   ├── QuestionForm/
-│   │   │   │   └── QuestionForm.jsx
-│   │   │   ├── QuestionList/
-│   │   │   │   └── QuestionList.jsx
-│   │   │   ├── QuestionItem/
-│   │   │   │   └── QuestionItem.jsx
-│   │   ├── ui/
-│   │   │   ├── buttons/
-│   │   │   │   └── ToggleButton.jsx
-│   │   │   └── cards/
-│   │   │       └── QuestionCard.jsx
-│   ├── pages/
-│   │   ├── Admin/
-│   │   │   └── AdminPage.jsx
-│   │   └── Quiz/
-│   │       └── QuizPage.jsx
-│   ├── services/
-│   │   └── api.js
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── routes.jsx
-├── .eslintrc.cjs
-├── .gitignore
-├── package.json
-├── README.md
-└── vite.config.js
-
+## 📁 Project Structure
+| Path                       | Description                                       |
+| -------------------------- | ------------------------------------------------- |
+| `node_modules/`            | Project dependencies (auto-managed by npm)        |
+| `public/`                  | Publicly accessible static files                  |
+| `src/`                     | Main source code directory                        |
+| ├── `assets/`              | Static assets like images                         |
+| └──── `react.svg`          | React logo SVG file                               |
+| ├── `components/`          | UI components and pages                           |
+| ├──── `AddExpensePage.jsx` | Page to add a new expense                         |
+| ├──── `AuthContext.jsx`    | Authentication context provider                   |
+| ├──── `BudgetPage.jsx`     | Budget management page                            |
+| ├──── `BudgetSetter.jsx`   | Component to set or edit budget                   |
+| ├──── `CategoryFilter.jsx` | Filter component for expense categories           |
+| ├──── `DashboardPage.jsx`  | Main dashboard overview                           |
+| ├──── `ExpenseForm.jsx`    | Form for creating/editing expenses                |
+| ├──── `ExpenseList.jsx`    | List component showing all expenses               |
+| ├──── `ExpensesPage.jsx`   | Page listing user expenses                        |
+| ├──── `Header.jsx`         | Top navigation header                             |
+| ├──── `HomePage.jsx`       | Landing page                                      |
+| ├──── `LoginPage.jsx`      | User login page                                   |
+| ├──── `NavBar.jsx`         | Sidebar or navigation bar                         |
+| ├──── `ProfilePage.jsx`    | User profile and settings page                    |
+| ├──── `RegisterPage.jsx`   | User registration page                            |
+| ├──── `ReportsPage.jsx`    | Expense reports and analysis                      |
+| ├──── `SettingsPage.jsx`   | App settings/configuration page                   |
+| ├── `App.css`              | App-wide CSS styling                              |
+| ├── `App.jsx`              | Root component for the app                        |
+| ├── `index.css`            | Global index styles                               |
+| ├── `main.jsx`             | ReactDOM root initialization                      |
+| └── `Summary.js`           | Component or utility to summarize budget/expenses |
+| `.gitignore`               | Git ignored files and folders                     |
+| `db.json`                  | JSON server database (mock backend)               |
 
 ## Project Collaborators
 
@@ -132,4 +125,4 @@ Vite for the blazing fast development environment
 
 React for the component-based architecture
 
-Create Vite for the initial project setup
+Create Vite for the initial project setup
