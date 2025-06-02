@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-
+import '../styles/ExpenseForm.css';
+import '../styles/ExpenseList.css';
+import '../styles/ExpenseList.css';
 function ExpenseForm({ onAddExpense }) {
     const [name, setName] = useState('');
     const [amount, setAmount] = useState('');
