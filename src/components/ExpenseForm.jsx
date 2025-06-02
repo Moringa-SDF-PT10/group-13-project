@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/ExpenseForm.css';
-import '../styles/ExpenseList.css';
-import '../styles/ExpenseList.css';
+
 function ExpenseForm({ onAddExpense }) {
     const [name, setName] = useState('');
     const [amount, setAmount] = useState('');
@@ -11,13 +9,13 @@ function ExpenseForm({ onAddExpense }) {
         e.preventDefault();
         if (!name || !amount) return;
 
-        // FIXED: Added date field to match API expectations
+        
         const expense = {
             name,
-            description: name, // FIXED: Added description field
+            description: name, 
             amount: Number(amount),
             category,
-            date: new Date().toISOString().split('T')[0] // FIXED: Added current date
+            date: new Date().toISOString().split('T')[0] 
         };
 
         onAddExpense(expense);
@@ -27,7 +25,7 @@ function ExpenseForm({ onAddExpense }) {
     };
 
     return (
-        <div className="expense-form"> {/* FIXED: Added wrapper div with class */}
+        <div className="expense-form"> 
             <h3>Add Expense</h3>
             <form onSubmit={handleSubmit}>
                 <input
