@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import BudgetSetter from './components/BudgetSetter';
-import CategoryFilter from './components/CategoryFilter';
-import ExpenseForm from './components/ExpenseForm';
+import BudgetSetter from './BudgetSetter';
+import CategoryFilter from './CategoryFilter';
+import ExpenseForm from './ExpenseForm';
 import "../App.css";
 
 function ExpenseList() {
