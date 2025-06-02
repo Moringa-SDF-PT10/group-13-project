@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Header from './Header';
 import ExpenseForm from './ExpenseForm';
-import '../styles/AddExpensePage.css';
 
 const AddExpensePage = () => {
     const [expenses, setExpenses] = useState([]);
