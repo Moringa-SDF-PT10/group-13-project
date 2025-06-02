@@ -91,29 +91,37 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Header />
-      <button onClick={() => setShowForm(true)}>Add Expense</button>
-      {showForm && (
-        <ExpenseForm
-          onSubmit={addExpense}
-          onCancel={() => setShowForm(false)}
-          editingExpense={editingExpense}
-        />
-      )}
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <ul>
-          {expenses.map(expense => (
-            <li key={expense.id}>
-              {expense.description} - ${expense.amount}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
+  <div className="App">
+    <Header />
+    <button onClick={() => setShowForm(true)}>Add Expense</button>
+    {showForm && (
+      <ExpenseForm
+        onSubmit={editingExpense ? updateExpense : addExpense}
+        onCancel={() => {
+          setShowForm(false);
+          setEditingExpense(null);
+        }}
+        editingExpense={editingExpense}
+      />
+    )}
+    {loading ? (
+      <div>Loading...</div>
+    ) : (
+      <ul>
+        {expenses.map(expense => (
+          <li key={expense.id}>
+            {expense.description} - ${expense.amount}
+            <button onClick={() => {
+              setEditingExpense(expense);
+              setShowForm(true);
+            }}>
+              Edit
+            </button>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+);
 
 export default App;
