@@ -1,43 +1,45 @@
+import BudgetSetter from './BudgetSetter';
+import CategoryFilter from './CategoryFilter';
+import ExpenseForm from './ExpenseForm';
 import { useState, useEffect } from 'react';
-import BudgetSetter from '../components/BudgetSetter';
-import CategoryFilter from '../components/CategoryFilter';
-import ExpenseForm from '../components/ExpenseForm';
+import ExpenseItem from './ExpenseItem';
 import './App.css';
 
-export default function ExpensesPage() {
+export default function ExpenseList() {
   const [expenses, setExpenses] = useState([]);
   const [budget, setBudget] = useState(0);
   const [category, setCategory] = useState('all');
   const [loading, setLoading] = useState(true);
 
-  // Fetch initial data
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [expensesRes, budgetRes] = await Promise.all([
-          fetch('https://group-13-project.onrender.com/expenses'),
-          fetch('https://group-13-project.onrender.com/expenses')
+          fetch('https://group-13-project.onrender.com/transactions'),
+          fetch('https://group-13-project.onrender.com/budgets')
         ]);
         
         const expensesData = await expensesRes.json();
         const budgetData = await budgetRes.json();
         
-        setExpenses(expensesData);
-        setBudget(budgetData[0]?.amount || 0);
+        setExpenses(Array.isArray(expensesData) ? expensesData : []);
+        setBudget(
+          Array.isArray(budgetData) && budgetData.length > 0 && budgetData[0].amount
+            ? budgetData[0].amount
+            : 0
+        );
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }
     };
-    
     fetchData();
   }, []);
 
-  // Add new expense
   const addExpense = async (newExpense) => {
     try {
-      const response = await fetch('https://group-13-project.onrender.com/expenses', {
+      const response = await fetch('https://group-13-project.onrender.com/transactions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...newExpense, id: Date.now() })
@@ -49,10 +51,9 @@ export default function ExpensesPage() {
     }
   };
 
-  // Delete expense
   const deleteExpense = async (id) => {
     try {
-      await fetch(`https://group-13-project.onrender.com/expenses/${id}`, {
+      await fetch(`https://group-13-project.onrender.com/transactions/${id}`, {
         method: 'DELETE'
       });
       setExpenses(expenses.filter(e => e.id !== id));
@@ -61,7 +62,6 @@ export default function ExpensesPage() {
     }
   };
 
-  // Update budget
   const updateBudget = async (amount) => {
     try {
       const response = await fetch('https://group-13-project.onrender.com/budgets/1', {
@@ -76,7 +76,6 @@ export default function ExpensesPage() {
     }
   };
 
-  // Filter expenses by category
   const filteredExpenses = category === 'all' 
     ? expenses 
     : expenses.filter(e => e.category === category);
@@ -89,10 +88,7 @@ export default function ExpensesPage() {
       
       <BudgetSetter budget={budget} onSetBudget={updateBudget} />
       
-      <CategoryFilter 
-        currentCategory={category} 
-        onChange={setCategory} 
-      />
+      <CategoryFilter currentCategory={category} onFilterChange={setCategory} />
       
       <ExpenseForm onAddExpense={addExpense} />
       
@@ -112,18 +108,7 @@ export default function ExpensesPage() {
             </div>
             
             {filteredExpenses.map(expense => (
-              <div key={expense.id} className="expense-item">
-                <span>{expense.description}</span>
-                <span>${expense.amount.toFixed(2)}</span>
-                <span>{expense.category}</span>
-                <span>{expense.date}</span>
-                <button 
-                  onClick={() => deleteExpense(expense.id)}
-                  className="delete-btn"
-                >
-                  Delete
-                </button>
-              </div>
+           <ExpenseItem key={expense.id} expense={expense} onDelete={deleteExpense} />
             ))}
           </>
         )}

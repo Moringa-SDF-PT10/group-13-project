@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import Header from './header';
-import ExpenseForm from './expenseForm';
+import { useEffect, useState } from 'react';
+import './App.css';
+import Header from './Header';
+import ExpenseForm from './ExpenseForm';
 
 function App() {
   const [expenses, setExpenses] = useState([]);
@@ -11,17 +11,16 @@ function App() {
   const [editingExpense, setEditingExpense] = useState(null);
   const [showImportantOnly, setShowImportantOnly] = useState(false);
 
-
-  const API_BASE_URL = "https://group-13-project.onrender.com/"
+  const API_BASE_URL = "https://group-13-project.onrender.com/transactions";
 
   useEffect(() => {
     fetchExpenses();
   }, []);
 
- const fetchExpenses = async () => {
+  const fetchExpenses = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${API_BASE_URL}`);
+      const response = await fetch(API_BASE_URL);
       if (response.ok) {
         const data = await response.json();
         setExpenses(data);
@@ -35,13 +34,10 @@ function App() {
     }
   };
 
-
-
-
   const addExpense = async (newExpense) => {
     setLoading(true);
     try {
-      const response = await fetch(`${API_BASE_URL}`, {
+      const response = await fetch(API_BASE_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +59,7 @@ function App() {
     }
   };
 
-   const updateExpense = async (updatedExpense) => {
+  const updateExpense = async (updatedExpense) => {
     setLoading(true);
     try {
       const response = await fetch(`${API_BASE_URL}/${editingExpense.id}`, {
@@ -94,7 +90,30 @@ function App() {
     }
   };
 
-  
+  return (
+    <div className="App">
+      <Header />
+      <button onClick={() => setShowForm(true)}>Add Expense</button>
+      {showForm && (
+        <ExpenseForm
+          onSubmit={addExpense}
+          onCancel={() => setShowForm(false)}
+          editingExpense={editingExpense}
+        />
+      )}
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <ul>
+          {expenses.map(expense => (
+            <li key={expense.id}>
+              {expense.description} - ${expense.amount}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
