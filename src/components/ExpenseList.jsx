@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BudgetSetter from './BudgetSetter';
 import CategoryFilter from './CategoryFilter';
-import '../styles/ExpenseList.css';
+import ExpenseForm from './ExpenseForm';
 
 function ExpenseList() {
   const [expenses, setExpenses] = useState([]);
