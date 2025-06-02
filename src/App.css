@@ -967,4 +967,4 @@ button:active::after {
   transform: translateY(-3px);
   box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4);
   background: linear-gradient(135deg, #059669 0%, #047857 100%);
-
+}
