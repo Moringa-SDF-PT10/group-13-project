@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
-import ExpenseForm from '../components/ExpenseForm';
+import Header from './Header';
+import ExpenseForm from './ExpenseForm';
 
 const AddExpensePage = () => {
     const [expenses, setExpenses] = useState([]);
 
     const addExpense = async (newExpense) => {
         try {
-            const response = await fetch('https://group-13-project.onrender.com/expenses', {
+            const response = await fetch('https://group-13-project-1.onrender.com/budgets', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...newExpense, id: Date.now() })

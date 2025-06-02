@@ -3,11 +3,10 @@ import React from 'react';
 function CategoryFilter({ currentCategory, onChange }) {
   const categories = [
     { value: 'all', label: 'All Categories' },
-    { value: 'food', label: 'Food' },
-    { value: 'transport', label: 'Transport' },
-    { value: 'housing', label: 'Housing' },
-    { value: 'entertainment', label: 'Entertainment' },
-    { value: 'other', label: 'Other' }
+    { value: 'Food', label: 'Food' }, // FIXED: Capitalized to match ExpenseForm
+    { value: 'Transport', label: 'Transport' },
+    { value: 'Utilities', label: 'Utilities' }, // FIXED: Added missing category
+    { value: 'Entertainment', label: 'Entertainment' }
   ];
 
   return (

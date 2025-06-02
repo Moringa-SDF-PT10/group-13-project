@@ -1,9 +1,9 @@
 import React from 'react';
-import { useRouter } from '../components/Router';
-import Header from '../components/Header';
+import { useNavigate } from 'react-router-dom'; // FIXED: Changed from custom router
+import Header from './Header';
 
 const HomePage = () => {
-    const { navigate } = useRouter();
+    const navigate = useNavigate(); // FIXED: Using react-router-dom navigate
 
     return (
         <div className="home-page">

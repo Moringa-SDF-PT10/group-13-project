@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useRouter } from '../components/Router';
-import { useAuth } from '../components/AuthContext';
+import { useNavigate } from 'react-router-dom'; // FIXED: Changed from custom router
+import { useAuth } from './AuthContext';
 
 const LoginPage = () => {
-    const { navigate } = useRouter();
+    const navigate = useNavigate(); // FIXED: Using react-router-dom navigate
     const { login } = useAuth();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
