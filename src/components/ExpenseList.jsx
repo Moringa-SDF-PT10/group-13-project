@@ -1,16 +1,15 @@
-import { useState, useEffect } from 'react';
-import BudgetSetter from './BudgetSetter';
-import CategoryFilter from './CategoryFilter';
-import ExpenseForm from './ExpenseForm';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import BudgetSetter from './components/BudgetSetter';
+import CategoryFilter from './components/CategoryFilter';
+import ExpenseForm from './components/ExpenseForm';
+import "../App.css";
 
-export default function ExpensesPage() {
+function ExpenseList() {
   const [expenses, setExpenses] = useState([]);
   const [budget, setBudget] = useState(0);
   const [category, setCategory] = useState('all');
   const [loading, setLoading] = useState(true);
 
-  // Fetch initial data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,7 +33,6 @@ export default function ExpensesPage() {
     fetchData();
   }, []);
 
-  // Add new expense
   const addExpense = async (newExpense) => {
     try {
       const response = await fetch('https://group-13-project.onrender.com/expenses', {
@@ -49,7 +47,6 @@ export default function ExpensesPage() {
     }
   };
 
-  // Delete expense
   const deleteExpense = async (id) => {
     try {
       await fetch(`https://group-13-project.onrender.com/expenses/${id}`, {
@@ -61,7 +58,6 @@ export default function ExpensesPage() {
     }
   };
 
-  // Update budget
   const updateBudget = async (amount) => {
     try {
       const response = await fetch('https://group-13-project.onrender.com/budgets/1', {
@@ -76,7 +72,6 @@ export default function ExpensesPage() {
     }
   };
 
-  // Filter expenses by category
   const filteredExpenses = category === 'all'
     ? expenses
     : expenses.filter(e => e.category === category);
@@ -86,19 +81,14 @@ export default function ExpensesPage() {
   return (
     <div className="expenses-container">
       <h1>Expense Tracker</h1>
-
       <BudgetSetter budget={budget} onSetBudget={updateBudget} />
-
       <CategoryFilter
         currentCategory={category}
         onChange={setCategory}
       />
-
       <ExpenseForm onAddExpense={addExpense} />
-
       <div className="expense-list">
         <h2>Your Expenses</h2>
-
         {filteredExpenses.length === 0 ? (
           <p className="no-expenses">No expenses found. Add your first expense!</p>
         ) : (
@@ -110,7 +100,6 @@ export default function ExpensesPage() {
               <span>Date</span>
               <span>Actions</span>
             </div>
-
             {filteredExpenses.map(expense => (
               <div key={expense.id} className="expense-item">
                 <span>{expense.description}</span>
@@ -131,3 +120,5 @@ export default function ExpensesPage() {
     </div>
   );
 }
+
+export default ExpenseList;
