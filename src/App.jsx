@@ -22,12 +22,12 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/expenses" element={<ExpensesPage />} />
-            <Route path="/add-expense" element={<AddExpensePage />} />
-            <Route path="/budget" element={<BudgetPage />} />
-            <Route path="/reports" element={<ReportsPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/dashboard" element={<DashboardPage />} protected />
+            <Route path="/expenses" element={<ExpensesPage />} protected />
+            <Route path="/add-expense" element={<AddExpensePage />} protected />
+            <Route path="/budget" element={<BudgetPage />} protected />
+            <Route path="/reports" element={<ReportsPage />} protected />
+            <Route path="/profile" element={<ProfilePage />} protected />
             <Route path="/settings" element={<SettingsPage />} />
           </Routes>
         </div>
