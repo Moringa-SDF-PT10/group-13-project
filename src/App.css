@@ -13,13 +13,20 @@ body {
   min-height: 100vh;
   color: #333;
   line-height: 1.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .App {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 20px;
-  min-height: 100vh;
+ max-width: 600px;
+  width: 100%;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  padding: 32px 24px;
+  min-height: 60vh;
+  margin: 40px 0;
 }
 
 /* Modern Card Design */
