@@ -17,12 +17,17 @@ Visit the website for a to access the app via the link below
  https://group-13-et.netlify.app/
 
  ## Expense Tracker Screenshot
-![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
-![alt text](image-4.png)
-![alt text](image-5.png)
-![alt text](image-6.png)
+![Screenshot 2025-06-03 010002](https://github.com/user-attachments/assets/f6aa2e51-5a1d-45c5-90cd-1a88b2aea131)
+
+![Screenshot 2025-06-03 010025](https://github.com/user-attachments/assets/a5481b6d-3808-4d33-8dfa-bde5b5643e79)
+
+![Screenshot 2025-06-03 010103](https://github.com/user-attachments/assets/8246cf67-cb7d-4ead-bcb1-0ccb633ad595)
+
+![Screenshot 2025-06-03 010224](https://github.com/user-attachments/assets/f575050b-95a4-4371-9914-c5285e09df2d)
+
+![Screenshot 2025-06-03 010639](https://github.com/user-attachments/assets/f08ea3b5-4a6c-4e1a-9bff-e0b4b558b968)
+
+
 
 ## Technologies Used
 
