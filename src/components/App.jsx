@@ -1,16 +1,16 @@
 import React from 'react';
 import './App.css';
-import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider } from './components/AuthContext';
 import { Router, Route } from './components/common/Router';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import DashboardPage from './pages/DashboardPage';
-import ExpensesPage from './pages/ExpensesPage';
-import AddExpensePage from './pages/AddExpensePage';
-import BudgetPage from './pages/BudgetPage';
-import ReportsPage from './pages/ReportsPage';
-import ProfilePage from './pages/ProfilePage';
-import SettingsPage from './pages/SettingsPage';
+import HomePage from './components/HomePage';
+import LoginPage from './components/LoginPage';
+import DashboardPage from './components/DashboardPage';
+import ExpensesPage from './components/ExpensesPage';
+import AddExpensePage from './components/AddExpensePage';
+import BudgetPage from './components/BudgetPage';
+import ReportsPage from './components/ReportsPage';
+import ProfilePage from './components/ProfilePage';
+import SettingsPage from './components/SettingsPage';
 
 function App() {
   return (
