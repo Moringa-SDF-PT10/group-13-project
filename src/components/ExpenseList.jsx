@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import BudgetSetter from './BudgetSetter';
 import CategoryFilter from './CategoryFilter';
-import ExpenseForm from './ExpenseForm';
-<<<<<<< HEAD:src/ExpenseList.jsx
-import { useState, useEffect } from 'react';
-import ExpenseItem from '../ExpenseItem';
-import './App.css';
-=======
->>>>>>> 4298bb6208b976ef73a617e3b62ea9c119aef981:src/components/ExpenseList.jsx
+import '../styles/ExpenseList.css';
+
 
 function ExpenseList() {
   const [expenses, setExpenses] = useState([]);

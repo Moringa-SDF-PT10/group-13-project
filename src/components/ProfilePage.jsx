@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuth } from './AuthContext';
 import Header from './Header';
+import '../styles/ProfilePage.css';
 
 const ProfilePage = () => {
     const { user } = useAuth();

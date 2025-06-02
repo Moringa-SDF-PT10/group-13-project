@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuth } from './AuthContext';
 import { useNavigate } from 'react-router-dom'; // FIXED: Changed from custom router
 import Header from './Header';
+import '../styles/DashboardPage.css';
 
 const DashboardPage = () => {
     const { user, logout } = useAuth();

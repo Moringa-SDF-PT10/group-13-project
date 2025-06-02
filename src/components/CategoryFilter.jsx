@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../styles/CategoryFilter.css';
 function CategoryFilter({ currentCategory, onChange }) {
   const categories = [
     { value: 'all', label: 'All Categories' },
