@@ -1,11 +1,11 @@
 import React from 'react';
-import '../styles/CategoryFilter.css';
+
 function CategoryFilter({ currentCategory, onChange }) {
   const categories = [
     { value: 'all', label: 'All Categories' },
-    { value: 'Food', label: 'Food' }, // FIXED: Capitalized to match ExpenseForm
+    { value: 'Food', label: 'Food' }, 
     { value: 'Transport', label: 'Transport' },
-    { value: 'Utilities', label: 'Utilities' }, // FIXED: Added missing category
+    { value: 'Utilities', label: 'Utilities' }, 
     { value: 'Entertainment', label: 'Entertainment' }
   ];
 
