@@ -1,10 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // FIXED: Changed from custom router
+import { useNavigate } from 'react-router-dom'; 
 import Header from './Header';
-import '../styles/HomePage.css';
 
 const HomePage = () => {
-    const navigate = useNavigate(); // FIXED: Using react-router-dom navigate
+    const navigate = useNavigate(); 
 
     return (
         <div className="home-page">
