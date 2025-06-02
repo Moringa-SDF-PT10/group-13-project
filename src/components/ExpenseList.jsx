@@ -1,11 +1,15 @@
+import React, { useState, useEffect } from 'react';
 import BudgetSetter from './BudgetSetter';
 import CategoryFilter from './CategoryFilter';
 import ExpenseForm from './ExpenseForm';
+<<<<<<< HEAD:src/ExpenseList.jsx
 import { useState, useEffect } from 'react';
 import ExpenseItem from '../ExpenseItem';
 import './App.css';
+=======
+>>>>>>> 4298bb6208b976ef73a617e3b62ea9c119aef981:src/components/ExpenseList.jsx
 
-export default function ExpenseList() {
+function ExpenseList() {
   const [expenses, setExpenses] = useState([]);
   const [budget, setBudget] = useState(0);
   const [category, setCategory] = useState('all');
@@ -15,31 +19,28 @@ export default function ExpenseList() {
     const fetchData = async () => {
       try {
         const [expensesRes, budgetRes] = await Promise.all([
-          fetch('https://group-13-project.onrender.com/transactions'),
-          fetch('https://group-13-project.onrender.com/budgets')
+          fetch('https://group-13-project-1.onrender.com/budgets'),
+          fetch('https://group-13-project-1.onrender.com/budgets')
         ]);
-        
+
         const expensesData = await expensesRes.json();
         const budgetData = await budgetRes.json();
-        
-        setExpenses(Array.isArray(expensesData) ? expensesData : []);
-        setBudget(
-          Array.isArray(budgetData) && budgetData.length > 0 && budgetData[0].amount
-            ? budgetData[0].amount
-            : 0
-        );
+
+        setExpenses(expensesData);
+        setBudget(budgetData[0]?.amount || 0);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }
     };
+
     fetchData();
   }, []);
 
   const addExpense = async (newExpense) => {
     try {
-      const response = await fetch('https://group-13-project.onrender.com/transactions', {
+      const response = await fetch('https://group-13-project-1.onrender.com/budgets', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...newExpense, id: Date.now() })
@@ -53,7 +54,7 @@ export default function ExpenseList() {
 
   const deleteExpense = async (id) => {
     try {
-      await fetch(`https://group-13-project.onrender.com/transactions/${id}`, {
+      await fetch(`https://group-13-project-1.onrender.com/budgets/${id}`, {
         method: 'DELETE'
       });
       setExpenses(expenses.filter(e => e.id !== id));
@@ -64,7 +65,7 @@ export default function ExpenseList() {
 
   const updateBudget = async (amount) => {
     try {
-      const response = await fetch('https://group-13-project.onrender.com/budgets/1', {
+      const response = await fetch('https://group-13-project-1.onrender.com/budgets/1', { // FIXED: URL typo
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: 1, amount })
@@ -76,8 +77,8 @@ export default function ExpenseList() {
     }
   };
 
-  const filteredExpenses = category === 'all' 
-    ? expenses 
+  const filteredExpenses = category === 'all'
+    ? expenses
     : expenses.filter(e => e.category === category);
 
   if (loading) return <div className="loading">Loading...</div>;
@@ -85,16 +86,14 @@ export default function ExpenseList() {
   return (
     <div className="expenses-container">
       <h1>Expense Tracker</h1>
-      
       <BudgetSetter budget={budget} onSetBudget={updateBudget} />
-      
-      <CategoryFilter currentCategory={category} onFilterChange={setCategory} />
-      
+      <CategoryFilter
+        currentCategory={category}
+        onChange={setCategory}
+      />
       <ExpenseForm onAddExpense={addExpense} />
-      
       <div className="expense-list">
         <h2>Your Expenses</h2>
-        
         {filteredExpenses.length === 0 ? (
           <p className="no-expenses">No expenses found. Add your first expense!</p>
         ) : (
@@ -106,9 +105,19 @@ export default function ExpenseList() {
               <span>Date</span>
               <span>Actions</span>
             </div>
-            
             {filteredExpenses.map(expense => (
-           <ExpenseItem key={expense.id} expense={expense} onDelete={deleteExpense} />
+              <div key={expense.id} className="expense-item">
+                <span>{expense.description || expense.name}</span> {/* FIXED: Handle both fields */}
+                <span>${expense.amount.toFixed(2)}</span>
+                <span>{expense.category}</span>
+                <span>{expense.date}</span>
+                <button
+                  onClick={() => deleteExpense(expense.id)}
+                  className="delete-btn"
+                >
+                  Delete
+                </button>
+              </div>
             ))}
           </>
         )}
@@ -116,3 +125,5 @@ export default function ExpenseList() {
     </div>
   );
 }
+
+export default ExpenseList;
