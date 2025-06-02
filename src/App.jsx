@@ -1,4 +1,6 @@
 import React from 'react';
+import NavBar from './components/NavBar';
+
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from './components/AuthContext';
@@ -18,6 +20,7 @@ function App() {
     <AuthProvider>
       <Router>
         <div className="App">
+          <NavBar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />

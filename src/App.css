@@ -784,12 +784,11 @@ header h1 {
   }
 }
 
-/* Smooth scrolling */
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -869,4 +868,47 @@ button::after {
 button:active::after {
   width: 300px;
   height: 300px;
+}
+
+.navbar {
+  background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+  padding: 1rem 2rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.15);
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;         
+  gap: 1rem;               
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+.navbar a:hover {
+  color: #d1d5db;
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    padding: 1rem 0.5rem;
+  }
+  .navbar ul {
+    gap: 0.7rem;
+    font-size: 0.98rem;
+  }
+  .navbar li {
+    margin-bottom: 0.5rem;
+  }
 }
