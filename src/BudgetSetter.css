@@ -1,0 +1,27 @@
+.budget-setter {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.budget-title {
+  color: #343a40;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.budget-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.budget-input:focus {
+  outline: none;
+  border-color: #4a6fa5;
+  box-shadow: 0 0 0 0.2rem rgba(74, 111, 165, 0.25);
+}

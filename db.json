@@ -1,0 +1,405 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "email": "john.doe@example.com",
+            "name": "John Doe",
+            "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=John",
+            "currency": "USD",
+            "createdAt": "2025-01-15T10:30:00Z",
+            "updatedAt": "2025-01-15T10:30:00Z"
+        },
+        {
+            "id": 2,
+            "email": "jane.smith@example.com",
+            "name": "Jane Smith",
+            "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Jane",
+            "currency": "EUR",
+            "createdAt": "2025-01-20T14:20:00Z",
+            "updatedAt": "2025-01-20T14:20:00Z"
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "Food & Dining",
+            "icon": "utensils",
+            "color": "#FF6B6B",
+            "type": "expense",
+            "userId": 1,
+            "createdAt": "2025-01-15T10:30:00Z"
+        },
+        {
+            "id": 2,
+            "name": "Transportation",
+            "icon": "car",
+            "color": "#4ECDC4",
+            "type": "expense",
+            "userId": 1,
+            "createdAt": "2025-01-15T10:30:00Z"
+        },
+        {
+            "id": 3,
+            "name": "Entertainment",
+            "icon": "film",
+            "color": "#45B7D1",
+            "type": "expense",
+            "userId": 1,
+            "createdAt": "2025-01-15T10:30:00Z"
+        },
+        {
+            "id": 4,
+            "name": "Shopping",
+            "icon": "shopping-bag",
+            "color": "#F7DC6F",
+            "type": "expense",
+            "userId": 1,
+            "createdAt": "2025-01-15T10:30:00Z"
+        },
+        {
+            "id": 5,
+            "name": "Bills & Utilities",
+            "icon": "zap",
+            "color": "#BB8FCE",
+            "type": "expense",
+            "userId": 1,
+            "createdAt": "2025-01-15T10:30:00Z"
+        },
+        {
+            "id": 6,
+            "name": "Salary",
+            "icon": "dollar-sign",
+            "color": "#58D68D",
+            "type": "income",
+            "userId": 1,
+            "createdAt": "2025-01-15T10:30:00Z"
+        },
+        {
+            "id": 7,
+            "name": "Freelance",
+            "icon": "briefcase",
+            "color": "#52C41A",
+            "type": "income",
+            "userId": 1,
+            "createdAt": "2025-01-15T10:30:00Z"
+        }
+    ],
+    "transactions": [
+        {
+            "id": 1,
+            "amount": 45.67,
+            "description": "Lunch at Italian restaurant",
+            "date": "2025-05-29",
+            "type": "expense",
+            "categoryId": 1,
+            "userId": 1,
+            "paymentMethod": "credit_card",
+            "location": "Downtown Restaurant",
+            "tags": [
+                "lunch",
+                "italian"
+            ],
+            "receiptUrl": null,
+            "createdAt": "2025-05-29T12:30:00Z",
+            "updatedAt": "2025-05-29T12:30:00Z"
+        },
+        {
+            "id": 2,
+            "amount": 12.50,
+            "description": "Bus fare to work",
+            "date": "2025-05-29",
+            "type": "expense",
+            "categoryId": 2,
+            "userId": 1,
+            "paymentMethod": "cash",
+            "location": "City Transit",
+            "tags": [
+                "commute"
+            ],
+            "receiptUrl": null,
+            "createdAt": "2025-05-29T08:15:00Z",
+            "updatedAt": "2025-05-29T08:15:00Z"
+        },
+        {
+            "id": 3,
+            "amount": 2500.00,
+            "description": "Monthly salary",
+            "date": "2025-05-01",
+            "type": "income",
+            "categoryId": 6,
+            "userId": 1,
+            "paymentMethod": "bank_transfer",
+            "location": "ABC Company",
+            "tags": [
+                "salary",
+                "monthly"
+            ],
+            "receiptUrl": null,
+            "createdAt": "2025-05-01T09:00:00Z",
+            "updatedAt": "2025-05-01T09:00:00Z"
+        },
+        {
+            "id": 4,
+            "amount": 89.99,
+            "description": "Movie tickets and popcorn",
+            "date": "2025-05-28",
+            "type": "expense",
+            "categoryId": 3,
+            "userId": 1,
+            "paymentMethod": "debit_card",
+            "location": "Cinema Complex",
+            "tags": [
+                "movies",
+                "weekend"
+            ],
+            "receiptUrl": null,
+            "createdAt": "2025-05-28T19:45:00Z",
+            "updatedAt": "2025-05-28T19:45:00Z"
+        },
+        {
+            "id": 5,
+            "amount": 120.00,
+            "description": "Electricity bill",
+            "date": "2025-05-15",
+            "type": "expense",
+            "categoryId": 5,
+            "userId": 1,
+            "paymentMethod": "bank_transfer",
+            "location": "Online Payment",
+            "tags": [
+                "utilities",
+                "monthly"
+            ],
+            "receiptUrl": "https://example.com/receipts/electricity-may-2025.pdf",
+            "createdAt": "2025-05-15T10:00:00Z",
+            "updatedAt": "2025-05-15T10:00:00Z"
+        }
+    ],
+    "budgets": [
+        {
+            "id": 1,
+            "name": "Monthly Food Budget",
+            "amount": 400.00,
+            "spent": 156.32,
+            "categoryId": 1,
+            "userId": 1,
+            "period": "monthly",
+            "startDate": "2025-05-01",
+            "endDate": "2025-05-31",
+            "alertThreshold": 0.8,
+            "isActive": true,
+            "createdAt": "2025-05-01T00:00:00Z",
+            "updatedAt": "2025-05-29T12:30:00Z"
+        },
+        {
+            "id": 2,
+            "name": "Transportation Budget",
+            "amount": 200.00,
+            "spent": 87.50,
+            "categoryId": 2,
+            "userId": 1,
+            "period": "monthly",
+            "startDate": "2025-05-01",
+            "endDate": "2025-05-31",
+            "alertThreshold": 0.9,
+            "isActive": true,
+            "createdAt": "2025-05-01T00:00:00Z",
+            "updatedAt": "2025-05-29T08:15:00Z"
+        },
+        {
+            "id": 3,
+            "name": "Entertainment Fund",
+            "amount": 150.00,
+            "spent": 89.99,
+            "categoryId": 3,
+            "userId": 1,
+            "period": "monthly",
+            "startDate": "2025-05-01",
+            "endDate": "2025-05-31",
+            "alertThreshold": 0.75,
+            "isActive": true,
+            "createdAt": "2025-05-01T00:00:00Z",
+            "updatedAt": "2025-05-28T19:45:00Z"
+        }
+    ],
+    "goals": [
+        {
+            "id": 1,
+            "name": "Emergency Fund",
+            "targetAmount": 5000.00,
+            "currentAmount": 1200.00,
+            "description": "Build emergency fund for 6 months expenses",
+            "targetDate": "2025-12-31",
+            "userId": 1,
+            "priority": "high",
+            "isActive": true,
+            "createdAt": "2025-01-15T10:30:00Z",
+            "updatedAt": "2025-05-15T14:20:00Z"
+        },
+        {
+            "id": 2,
+            "name": "Vacation Fund",
+            "targetAmount": 2000.00,
+            "currentAmount": 450.00,
+            "description": "Save for summer vacation to Europe",
+            "targetDate": "2025-07-15",
+            "userId": 1,
+            "priority": "medium",
+            "isActive": true,
+            "createdAt": "2025-02-01T09:15:00Z",
+            "updatedAt": "2025-05-20T16:30:00Z"
+        }
+    ],
+    "recurringTransactions": [
+        {
+            "id": 1,
+            "amount": 2500.00,
+            "description": "Monthly salary",
+            "type": "income",
+            "categoryId": 6,
+            "userId": 1,
+            "frequency": "monthly",
+            "dayOfMonth": 1,
+            "paymentMethod": "bank_transfer",
+            "isActive": true,
+            "nextDate": "2025-06-01",
+            "endDate": null,
+            "createdAt": "2025-01-15T10:30:00Z",
+            "updatedAt": "2025-05-01T09:00:00Z"
+        },
+        {
+            "id": 2,
+            "amount": 120.00,
+            "description": "Electricity bill",
+            "type": "expense",
+            "categoryId": 5,
+            "userId": 1,
+            "frequency": "monthly",
+            "dayOfMonth": 15,
+            "paymentMethod": "bank_transfer",
+            "isActive": true,
+            "nextDate": "2025-06-15",
+            "endDate": null,
+            "createdAt": "2025-01-15T10:30:00Z",
+            "updatedAt": "2025-05-15T10:00:00Z"
+        },
+        {
+            "id": 3,
+            "amount": 50.00,
+            "description": "Gym membership",
+            "type": "expense",
+            "categoryId": 5,
+            "userId": 1,
+            "frequency": "monthly",
+            "dayOfMonth": 5,
+            "paymentMethod": "credit_card",
+            "isActive": true,
+            "nextDate": "2025-06-05",
+            "endDate": null,
+            "createdAt": "2025-01-15T10:30:00Z",
+            "updatedAt": "2025-05-05T07:30:00Z"
+        }
+    ],
+    "reports": [
+        {
+            "id": 1,
+            "name": "Monthly Expense Report - May 2025",
+            "type": "monthly_expense",
+            "userId": 1,
+            "period": {
+                "startDate": "2025-05-01",
+                "endDate": "2025-05-31"
+            },
+            "data": {
+                "totalIncome": 2750.00,
+                "totalExpenses": 568.16,
+                "netAmount": 2181.84,
+                "categoryBreakdown": [
+                    {
+                        "categoryId": 1,
+                        "categoryName": "Food & Dining",
+                        "amount": 156.32,
+                        "percentage": 27.5
+                    },
+                    {
+                        "categoryId": 2,
+                        "categoryName": "Transportation",
+                        "amount": 87.50,
+                        "percentage": 15.4
+                    },
+                    {
+                        "categoryId": 3,
+                        "categoryName": "Entertainment",
+                        "amount": 89.99,
+                        "percentage": 15.8
+                    },
+                    {
+                        "categoryId": 5,
+                        "categoryName": "Bills & Utilities",
+                        "amount": 234.35,
+                        "percentage": 41.3
+                    }
+                ]
+            },
+            "generatedAt": "2025-05-30T08:00:00Z"
+        }
+    ],
+    "notifications": [
+        {
+            "id": 1,
+            "userId": 1,
+            "type": "budget_alert",
+            "title": "Budget Alert: Entertainment",
+            "message": "You've spent 60% of your entertainment budget for this month",
+            "isRead": false,
+            "data": {
+                "budgetId": 3,
+                "percentage": 60
+            },
+            "createdAt": "2025-05-28T19:45:00Z"
+        },
+        {
+            "id": 2,
+            "userId": 1,
+            "type": "recurring_transaction",
+            "title": "Upcoming Payment",
+            "message": "Your gym membership payment of $50.00 is due on June 5th",
+            "isRead": true,
+            "data": {
+                "recurringTransactionId": 3,
+                "dueDate": "2025-06-05"
+            },
+            "createdAt": "2025-05-30T09:00:00Z"
+        }
+    ],
+    "tags": [
+        {
+            "id": 1,
+            "name": "lunch",
+            "userId": 1,
+            "color": "#FF6B6B",
+            "usageCount": 5
+        },
+        {
+            "id": 2,
+            "name": "commute",
+            "userId": 1,
+            "color": "#4ECDC4",
+            "usageCount": 12
+        },
+        {
+            "id": 3,
+            "name": "utilities",
+            "userId": 1,
+            "color": "#BB8FCE",
+            "usageCount": 8
+        },
+        {
+            "id": 4,
+            "name": "weekend",
+            "userId": 1,
+            "color": "#45B7D1",
+            "usageCount": 3
+        }
+    ]
+}
