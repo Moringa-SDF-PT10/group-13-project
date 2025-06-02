@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from './components/AuthContext';
 import HomePage from './components/HomePage';
 import LoginPage from './components/LoginPage';
+import RegisterPage from './components/RegisterPage';
 import DashboardPage from './components/DashboardPage';
 import ExpensesPage from './components/ExpensesPage';
 import AddExpensePage from './components/AddExpensePage';
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/expenses" element={<ExpensesPage />} />
             <Route path="/add-expense" element={<AddExpensePage />} />
