@@ -35,29 +35,29 @@ Visit the website for a to access the app via the link below
 
 1. Clone the repository:
    
-   git clone git@github.com:Moringa-SDF-PT10/group-13-project.git.
+  `git clone git@github.com:Moringa-SDF-PT10/group-13-project.git.`
 
 2. Navigate to the project directory:
 
-  cd group-13-project.git
+  `cd group-13-project.git`
 ### Install dependencies:
-  npm install
+  `npm install`
 
 Start the development server:
- npm run dev
+ `npm run dev`
 
 Open your browser and visit:
 
 http://localhost:5173
 
 ### Available Scripts
-npm run dev: Starts the development server
+`npm run dev`: Starts the development server
 
-npm run build: Builds the app for production
+`npm run build`: Builds the app for production
 
-npm run lint: Runs ESLint to check for code issues
+`npm run lint`: Runs ESLint to check for code issues
 
-npm run preview: Previews the production build locally
+`npm run preview`: Previews the production build locally
 
 ## 📁 Project Structure
 | Path                       | Description                                       |
@@ -109,11 +109,11 @@ Contributions are welcome! Please follow these steps:
 
 Fork the repository
 
-Create a new branch git checkout -b feature/your-feature
+Create a new branch `git checkout -b feature/your-feature`
 
-Commit your changes git commit -m 'Add some feature
+Commit your changes `git commit -m 'Add some feature`
 
-Push to the branch git push origin feature/your-feature
+Push to the branch `git push origin feature/your-feature`
 
 Open a Pull Request
 
