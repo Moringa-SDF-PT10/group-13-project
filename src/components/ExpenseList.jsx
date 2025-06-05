@@ -8,33 +8,33 @@ function ExpenseList() {
   const [budget, setBudget] = useState(0);
   const [category, setCategory] = useState('all');
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setError('');
         const [expensesRes, budgetRes] = await Promise.all([
-          fetch('https://group-13-project-1.onrender.com/budgets'),
+          fetch('https://group-13-project-1.onrender.com/transactions'),
           fetch('https://group-13-project-1.onrender.com/budgets')
         ]);
-
         const expensesData = await expensesRes.json();
         const budgetData = await budgetRes.json();
-
         setExpenses(expensesData);
         setBudget(budgetData[0]?.amount || 0);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        setError("Error fetching data. Please try again later.");
       } finally {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
   const addExpense = async (newExpense) => {
     try {
-      const response = await fetch('https://group-13-project-1.onrender.com/budgets', {
+      setError('');
+      const response = await fetch('https://group-13-project-1.onrender.com/transactions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...newExpense, id: Date.now() })
@@ -42,24 +42,26 @@ function ExpenseList() {
       const data = await response.json();
       setExpenses([...expenses, data]);
     } catch (error) {
-      console.error("Error adding expense:", error);
+      setError("Error adding expense. Please try again.");
     }
   };
 
   const deleteExpense = async (id) => {
     try {
-      await fetch(`https://group-13-project-1.onrender.com/budgets/${id}`, {
+      setError('');
+      await fetch(`https://group-13-project-1.onrender.com/transactions/${id}`, {
         method: 'DELETE'
       });
       setExpenses(expenses.filter(e => e.id !== id));
     } catch (error) {
-      console.error("Error deleting expense:", error);
+      setError("Error deleting expense. Please try again.");
     }
   };
 
   const updateBudget = async (amount) => {
     try {
-      const response = await fetch('https://group-13-project-1.onrender.com/budgets/1', { // FIXED: URL typo
+      setError('');
+      const response = await fetch('https://group-13-project-1.onrender.com/budgets/1', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: 1, amount })
@@ -67,7 +69,7 @@ function ExpenseList() {
       const data = await response.json();
       setBudget(data.amount);
     } catch (error) {
-      console.error("Error updating budget:", error);
+      setError("Error updating budget. Please try again.");
     }
   };
 
@@ -75,20 +77,30 @@ function ExpenseList() {
     ? expenses
     : expenses.filter(e => e.category === category);
 
+  // Sort expenses by date (most recent first)
+  const sortedExpenses = [...filteredExpenses].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const totalSpent = expenses.reduce((sum, e) => sum + Number(e.amount), 0);
+  const budgetLeft = budget - totalSpent;
+
   if (loading) return <div className="loading">Loading...</div>;
 
   return (
     <div className="expenses-container">
       <h1>Expense Tracker</h1>
       <BudgetSetter budget={budget} onSetBudget={updateBudget} />
+      <div style={{ margin: '1rem 0', fontWeight: 600 }}>
+        Budget Left: <span style={{ color: budgetLeft < 0 ? 'red' : 'green' }}>${budgetLeft.toFixed(2)}</span>
+      </div>
       <CategoryFilter
         currentCategory={category}
         onChange={setCategory}
       />
       <ExpenseForm onAddExpense={addExpense} />
+      {error && <div style={{ color: 'red', margin: '1rem 0' }}>{error}</div>}
       <div className="expense-list">
         <h2>Your Expenses</h2>
-        {filteredExpenses.length === 0 ? (
+        {sortedExpenses.length === 0 ? (
           <p className="no-expenses">No expenses found. Add your first expense!</p>
         ) : (
           <>
@@ -99,10 +111,10 @@ function ExpenseList() {
               <span>Date</span>
               <span>Actions</span>
             </div>
-            {filteredExpenses.map(expense => (
+            {sortedExpenses.map(expense => (
               <div key={expense.id} className="expense-item">
-                <span>{expense.description || expense.name}</span> {/* FIXED: Handle both fields */}
-                <span>${expense.amount.toFixed(2)}</span>
+                <span>{expense.description || expense.name}</span>
+                <span>${Number(expense.amount).toFixed(2)}</span>
                 <span>{expense.category}</span>
                 <span>{expense.date}</span>
                 <button
