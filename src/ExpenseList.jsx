@@ -14,6 +14,7 @@ export default function ExpensesPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+<<<<<<< Updated upstream:src/ExpenseList.jsx
         const [expensesRes, budgetRes] = await Promise.all([
           fetch('https://group-13-project.onrender.com/expenses'),
           fetch('https://group-13-project.onrender.com/expenses')
@@ -24,6 +25,19 @@ export default function ExpensesPage() {
         
         setExpenses(expensesData);
         setBudget(budgetData[0]?.amount || 0);
+=======
+        // Fetch transactions (expenses) and budget separately
+        const [transactionsRes, budgetsRes] = await Promise.all([
+          fetch('https://group-13-project-1.onrender.com/transactions'),
+          fetch('https://group-13-project-1.onrender.com/budgets')
+        ]);
+
+        const transactionsData = await transactionsRes.json();
+        const budgetsData = await budgetsRes.json();
+
+        setExpenses(transactionsData);
+        setBudget(budgetsData[0]?.amount || 0);
+>>>>>>> Stashed changes:src/components/ExpenseList.jsx
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -37,7 +51,11 @@ export default function ExpensesPage() {
   // Add new expense
   const addExpense = async (newExpense) => {
     try {
+<<<<<<< Updated upstream:src/ExpenseList.jsx
       const response = await fetch('https://group-13-project.onrender.com/expenses', {
+=======
+      const response = await fetch('https://group-13-project-1.onrender.com/transactions', {
+>>>>>>> Stashed changes:src/components/ExpenseList.jsx
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...newExpense, id: Date.now() })
@@ -52,7 +70,11 @@ export default function ExpensesPage() {
   // Delete expense
   const deleteExpense = async (id) => {
     try {
+<<<<<<< Updated upstream:src/ExpenseList.jsx
       await fetch(`https://group-13-project.onrender.com/expenses/${id}`, {
+=======
+      await fetch(`https://group-13-project-1.onrender.com/transactions/${id}`, {
+>>>>>>> Stashed changes:src/components/ExpenseList.jsx
         method: 'DELETE'
       });
       setExpenses(expenses.filter(e => e.id !== id));
@@ -64,7 +86,11 @@ export default function ExpensesPage() {
   // Update budget
   const updateBudget = async (amount) => {
     try {
+<<<<<<< Updated upstream:src/ExpenseList.jsx
       const response = await fetch('https://group-13-project.onrender.com/budgets/1', {
+=======
+      const response = await fetch('https://group-13-project-1.onrender.com/budgets/1', {
+>>>>>>> Stashed changes:src/components/ExpenseList.jsx
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: 1, amount })
@@ -113,8 +139,13 @@ export default function ExpensesPage() {
             
             {filteredExpenses.map(expense => (
               <div key={expense.id} className="expense-item">
+<<<<<<< Updated upstream:src/ExpenseList.jsx
                 <span>{expense.description}</span>
                 <span>${expense.amount.toFixed(2)}</span>
+=======
+                <span>{expense.description || expense.name}</span>
+                <span>${Number(expense.amount).toFixed(2)}</span>
+>>>>>>> Stashed changes:src/components/ExpenseList.jsx
                 <span>{expense.category}</span>
                 <span>{expense.date}</span>
                 <button 
