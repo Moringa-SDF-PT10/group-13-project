@@ -8,12 +8,10 @@ function ExpenseList() {
   const [budget, setBudget] = useState(0);
   const [category, setCategory] = useState('all');
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setError('');
         const [expensesRes, budgetRes] = await Promise.all([
           fetch('https://group-13-project-1.onrender.com/transactions'),
           fetch('https://group-13-project-1.onrender.com/budgets')
@@ -23,7 +21,7 @@ function ExpenseList() {
         setExpenses(expensesData);
         setBudget(budgetData[0]?.amount || 0);
       } catch (error) {
-        setError("Error fetching data. Please try again later.");
+        console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }
@@ -33,7 +31,6 @@ function ExpenseList() {
 
   const addExpense = async (newExpense) => {
     try {
-      setError('');
       const response = await fetch('https://group-13-project-1.onrender.com/transactions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -42,25 +39,23 @@ function ExpenseList() {
       const data = await response.json();
       setExpenses([...expenses, data]);
     } catch (error) {
-      setError("Error adding expense. Please try again.");
+      console.error("Error adding expense:", error);
     }
   };
 
   const deleteExpense = async (id) => {
     try {
-      setError('');
       await fetch(`https://group-13-project-1.onrender.com/transactions/${id}`, {
         method: 'DELETE'
       });
       setExpenses(expenses.filter(e => e.id !== id));
     } catch (error) {
-      setError("Error deleting expense. Please try again.");
+      console.error("Error deleting expense:", error);
     }
   };
 
   const updateBudget = async (amount) => {
     try {
-      setError('');
       const response = await fetch('https://group-13-project-1.onrender.com/budgets/1', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -69,7 +64,7 @@ function ExpenseList() {
       const data = await response.json();
       setBudget(data.amount);
     } catch (error) {
-      setError("Error updating budget. Please try again.");
+      console.error("Error updating budget:", error);
     }
   };
 
@@ -77,30 +72,20 @@ function ExpenseList() {
     ? expenses
     : expenses.filter(e => e.category === category);
 
-  // Sort expenses by date (most recent first)
-  const sortedExpenses = [...filteredExpenses].sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  const totalSpent = expenses.reduce((sum, e) => sum + Number(e.amount), 0);
-  const budgetLeft = budget - totalSpent;
-
   if (loading) return <div className="loading">Loading...</div>;
 
   return (
     <div className="expenses-container">
       <h1>Expense Tracker</h1>
       <BudgetSetter budget={budget} onSetBudget={updateBudget} />
-      <div style={{ margin: '1rem 0', fontWeight: 600 }}>
-        Budget Left: <span style={{ color: budgetLeft < 0 ? 'red' : 'green' }}>${budgetLeft.toFixed(2)}</span>
-      </div>
       <CategoryFilter
         currentCategory={category}
         onChange={setCategory}
       />
       <ExpenseForm onAddExpense={addExpense} />
-      {error && <div style={{ color: 'red', margin: '1rem 0' }}>{error}</div>}
       <div className="expense-list">
         <h2>Your Expenses</h2>
-        {sortedExpenses.length === 0 ? (
+        {filteredExpenses.length === 0 ? (
           <p className="no-expenses">No expenses found. Add your first expense!</p>
         ) : (
           <>
@@ -111,10 +96,10 @@ function ExpenseList() {
               <span>Date</span>
               <span>Actions</span>
             </div>
-            {sortedExpenses.map(expense => (
+            {filteredExpenses.map(expense => (
               <div key={expense.id} className="expense-item">
                 <span>{expense.description || expense.name}</span>
-                <span>${Number(expense.amount).toFixed(2)}</span>
+                <span>${expense.amount.toFixed(2)}</span>
                 <span>{expense.category}</span>
                 <span>{expense.date}</span>
                 <button
