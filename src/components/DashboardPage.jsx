@@ -16,7 +16,7 @@ const DashboardPage = () => {
         <div className="dashboard-page">
             <Header />
             <div className="dashboard-header">
-                <h2>Welcome, {user?.username}!</h2>
+                <h2>Welcome, {user?.username || 'User'}!</h2>
                 <button onClick={handleLogout}>Logout</button>
             </div>
             <div className="dashboard-links">
