@@ -7,7 +7,7 @@ const AddExpensePage = () => {
 
     const addExpense = async (newExpense) => {
         try {
-            const response = await fetch('https://group-13-project-1.onrender.com/budgets', {
+            const response = await fetch('https://group-13-project-1.onrender.com/transactions', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...newExpense, id: Date.now() })
